@@ -339,13 +339,15 @@ char *linuxtrack_get_prefix()
 
 static void* linuxtrack_find_library(linuxtrack_state_type *problem)
 {
-  void* testhandle = linuxtrack_try_library("./liblinuxtrack.so");
-	if(testhandle == NULL)
+  void* tir_libhandle = linuxtrack_try_library("./libtirbridge.so");
+	if(tir_libhandle == NULL)
 	{
 		*problem = err_NO_CONFIG;
 		return NULL;
 	}
-	return testhandle;
+	return tir_libhandle;
+	// Ignore rest of the function code
+
 
 	/*
   //search order:
