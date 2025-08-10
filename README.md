@@ -3,13 +3,13 @@ I have been trying make the code more barebone, there is still much to do, but i
 The main purpose is to create a bridge between the TrackIR hardware and OpenTrack software.
 With some modification of UglyDwarf:s code this is possible via UDP.
 
-To compile the code (I hope it works for you), create a subdirectory (i.e. build) and enter it. Then compile it:
-$ cmake ..
-$ make
+To compile the code (I hope it works for you), create a subdirectory (i.e. build) and enter it. Then compile it:<br>
+$ cmake ..<br>
+$ make<br>
 
-If everything turned out well, you should have two files:
-liblinuxtrack.so
-ltr_pipe
+If everything turned out well, you should have two files:<br>
+libtirbridge.so<br>
+tir_pipe<br>
 
 Copy the start_tracking and stop_tracking files into the build folder, and run start_tracking.
 If you look in to the file start_tracking, it is set to output to port 4242 (you can change that if you want).
