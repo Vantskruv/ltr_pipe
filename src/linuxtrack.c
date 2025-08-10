@@ -34,12 +34,9 @@ THE SOFTWARE.
 #include <string.h>
 #include "linuxtrack.h"
 
-/*
 #ifdef HAVE_CONFIG_H
   #include <config.h>
 #endif
-*/
-#include "config.h"
 
 #define BLOB_ELEMENTS 3
 
@@ -105,18 +102,21 @@ static struct func_defs_t functions[] =
 };
 
 static const char *lib_locations[] = {
+"./liblinuxtrack.so",
+/*
 "/Frameworks/liblinuxtrack.0.dylib",
 "/lib/linuxtrack/liblinuxtrack.so.0",
 "/lib32/linuxtrack/liblinuxtrack32.so.0",
 "/lib/i386-linux-gnu/linuxtrack/liblinuxtrack.so.0",
 "/lib/i386-linux-gnu/linuxtrack/liblinuxtrack32.so.0",
 "/lib/x86_64-linux-gnu/linuxtrack/liblinuxtrack.so.0",
-/* old paths */
+// old paths
 "/lib/liblinuxtrack.so.0",
 "/lib32/liblinuxtrack.so.0",
 "/lib32/liblinuxtrack32.so.0",
 "/lib/i386-linux-gnu/liblinuxtrack.so.0",
 "/lib/x86_64-linux-gnu/liblinuxtrack.so.0",
+*/
 NULL
 };
 
@@ -339,7 +339,15 @@ char *linuxtrack_get_prefix()
 
 static void* linuxtrack_find_library(linuxtrack_state_type *problem)
 {
-  /*
+  void* testhandle = linuxtrack_try_library("./liblinuxtrack.so");
+	if(testhandle == NULL)
+	{
+		*problem = err_NO_CONFIG;
+		return NULL;
+	}
+	return testhandle;
+
+	/*
   //search order:
   //  1. LINUXTRACK_LIBS
   //       development, backward compatibility and weird locations handling
@@ -376,7 +384,6 @@ static void* linuxtrack_find_library(linuxtrack_state_type *problem)
   int i = 0;
   while(lib_locations[i] != NULL){
     name = construct_name(prefix, "/../", lib_locations[i++]);
-	printf("NAME: %s\n", name);
     if((handle = linuxtrack_try_library(name)) != NULL){
       free(name);
       free(prefix);

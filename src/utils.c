@@ -1,9 +1,6 @@
-/*
 #ifdef HAVE_CONFIG_H
   #include <config.h>
 #endif
-*/
-#include "config.h"
 
 #ifndef _GNU_SOURCE
   #define _GNU_SOURCE
@@ -26,7 +23,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
-
 #include "utils.h"
 
 #define MAX_LOGS 10
@@ -306,10 +302,9 @@ char *ltr_int_get_app_path(const char *suffix)
 #else
   #undef LIB_PATH
   #define DATA_PATH "/../Resources/linuxtrack/"
+  #define LIB_PATH "/../Frameworks/"
   #define LIB_SUFFIX ".0.dylib"
 #endif
-
-#define LIB_PATH "/../Frameworks/"
 
 char *ltr_int_get_data_path(const char *data)
 {
