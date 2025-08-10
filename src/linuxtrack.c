@@ -102,7 +102,7 @@ static struct func_defs_t functions[] =
 };
 
 static const char *lib_locations[] = {
-"./liblinuxtrack.so",
+"./libtirbridge.so",
 /*
 "/Frameworks/liblinuxtrack.0.dylib",
 "/lib/linuxtrack/liblinuxtrack.so.0",
