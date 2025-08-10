@@ -1,1 +1,1 @@
-nohup ltr_pipe --output-net-udp --dst-port=4242 --format-opentrack </dev/null >/dev/null 2>&1 &
+nohup tir_pipe --output-net-udp --dst-port=4242 --format-opentrack </dev/null >/dev/null 2>&1 &
